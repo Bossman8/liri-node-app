@@ -37,8 +37,8 @@ function getTweets() {
             message: "What is the twitter username?",
             name: "twitterName"
         }
-    ]).then(function (twitterAns) {
-        var user = twitterAns.twitterName;
+    ]).then(function (answers) {
+        var user = answers.twitterName;
         var params = { screen_name: (user) };
         client.get('statuses/user_timeline', params, function (error, tweets, response) {
             if (!error) {
@@ -133,7 +133,7 @@ function doItNow() {
                 if (!error) {
                     for (i = 0; i < tweets.length; i++) {
                         console.log("------------------------------");
-                        console.log(tweets[i].created_at);
+                        console.log("Created: " +tweets[i].created_at);
                         console.log(tweets[i].text);
                     }
                 }  
